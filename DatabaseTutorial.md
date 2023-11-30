@@ -347,7 +347,7 @@ SELECT CURRENT_USER();
 ```
 Query Results:
 ```
-CREATE TABLE mainDatabase( mainMealQuantity int, dessertQuantity int, entreQuantity int, soupQuantity int, cookieQuantity int, rollQuantity int, description varchar(100), date timestamp DEFAULT CURRENT_TIMESTAMP );
+CREATE TABLE mainDatabase( meal int, dessert_side int, entree int, soup int, cookie int, roll int, description varchar(100), date timestamp DEFAULT CURRENT_TIMESTAMP );
 ```
 After that , this will be a random insert to assure your database is working properly. 
 
