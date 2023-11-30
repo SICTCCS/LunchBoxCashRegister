@@ -338,6 +338,24 @@ Query Results:
 ```
 
 <br>
+
+## Create Lunchbox table
+This will be the code to create the Lunchbox database table.
+ 
+```mysql
+SELECT CURRENT_USER();
+```
+Query Results:
+```
+CREATE TABLE mainDatabase( mainMealQuantity int, dessertQuantity int, entreQuantity int, soupQuantity int, cookieQuantity int, rollQuantity int, description varchar(100), date timestamp DEFAULT CURRENT_TIMESTAMP );
+```
+After that , this will be a random insert to assure your database is working properly. 
+
+```
+INSERT INTO mainDatabase (mainMealQuantity, dessertQuantity, entreQuantity, soupQuantity, cookieQuantity, rollQuantity, description) VALUES (1,1,1,1,1,1,"firstorder");
+```
+
+<br>
  
 ## Shortcuts Commands and Cheatsheet
  
