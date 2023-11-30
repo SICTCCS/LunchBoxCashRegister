@@ -11,7 +11,7 @@
 <div id='overview'/>
 
 ## Overview
-Instructions to create API to connect Andriod Studio To Database
+Instructions to create API to connect Andriod Studio To Database.
 Before we can do this, we need to install `Python`, Vim, and the required dependencies.
 The required dependencies are also called `modules`. Follow the steps below to begin 
 preparing your installation of the Node stack. 
@@ -42,7 +42,7 @@ sudo apt install curl
 ```
 <div id='InsertingIndexFile'/>
 
-UPLOAD index5.py file which is your api
+Upload index5.py file which is in the API folder in the github repo. To do this move to a flash drive and move on Pi Documents. 
 
 <div id='torun'/>
 To Run API
@@ -54,7 +54,7 @@ python3 index.py
 
 <div id='InsertJsonFile'/>
  
-add.json file 
+Create add.json file on raspberry pi Documents. After creating the jason file insert the code below. 
 
 {
 	"meal":1,
@@ -69,7 +69,7 @@ add.json file
 
 <div id='TestIndexFile'/>
 
-To test upload
+Run the code below to test to see if any errors accurs. 
 
 ```console
 curl -s -X POST -H "Content-Type: application/json" -d "@json/add_data.json" http://localhost:8000 | jq .
@@ -77,10 +77,8 @@ curl -s -X POST -H "Content-Type: application/json" -d "@json/add_data.json" htt
 
 <div id='OpenWebPage'/>
 
-To open web page
+To open the database web page type the code below in your browser. 
 
 http://10.60.4.150:8000
-
-
 
 NOTES - Whenever download csv file - restart api after
