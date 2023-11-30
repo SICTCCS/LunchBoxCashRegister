@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <NumberPad>-->
+<!--        <Row>-->
+<!--            <Button>1</Button>-->
+<!--            <Button>2</Button>-->
+<!--            <Button>3</Button>-->
+<!--        </Row>-->
+<!--        <Row>-->
+<!--            <Button>4</Button>-->
+<!--            <Button>5</Button>-->
+<!--            <Button>6</Button>-->
+<!--        </Row>-->
+<!--        <Row>-->
+<!--            <Button>7</Button>-->
+<!--            <Button>8</Button>-->
+<!--            <Button>9</Button>-->
+<!--        </Row>-->
+<!--        <Row>-->
+<!--            <Button>0</Button>-->
+<!--        </Row>-->
+<!--    </NumberPad>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
