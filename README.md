@@ -21,7 +21,7 @@ Welcome to the Cash Register App, a tool designed for cashiers to efficiently ma
 
 ## 2. Installation
 
-Ensure that your Android device meets the system requirements for the Cash Register App. Download and install the app from the official app store or the provided APK file.
+Ensure that your Android device meets the system requirements for the Cash Register App, download the APK file, go to build, then build the APK, wait for the pop-up in the bottom right for 30 seconds, click "locate," and then drag the file to the tablet, finally opening the file on the tablet.
 
 ---
 
@@ -41,27 +41,27 @@ Upon launching the Cash Register App, you will be presented with the main screen
 - Use the "Add" button to increase the quantity.
 - Use the "Del" button to decrease the quantity.
 - Each addition increases the total price by $8.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Meal Item.png" height="200px" width="400px"></kbd><br>
 
 ### On-Tray Items
 - Use the respective "Add" and "Del" buttons to manage quantities.
 - Each addition increases the total price by $3.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Entree Item.png" height="200px" width="400px"></kbd><br>
 
 ### Roll Items
 - Adjust quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $0.50.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Roll Item.png" height="200px" width="400px"></kbd><br>
 
 ### Dessert Items
 - Modify quantities with the "Add" and "Del" buttons.
 - Each addition increases the total price by $2.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Dessert Item.png" height="200px" width="400px"></kbd><br>
 
 ### Cookie Items
 - Manage quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $1.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Cookie Item.png" height="200px" width="400px"></kbd><br>
 
 ---
 
@@ -72,7 +72,7 @@ To process payments, follow these steps:
 1. Enter the amount given by the customer in the "Amount Given" field.
 2. Press the "Calculate" button.
 3. The change due to the customer will be displayed.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/Payments.png" height="200px" width="400px"></kbd><br>
 
 ---
 
@@ -82,7 +82,7 @@ To process payments, follow these steps:
 - Click the "More Options" button to access extra functionalities.
 - Add specific amounts (1, 5, 10, 20,50 100) to the "Amount Given" field.
 -Exact change button in order to calculate the exact amount of change without having to press two buttons.
-<img src="https://github.com/ZMANG1980/Portfolio-/blob/main/Images/Main Page.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/ZMANG1980/UserManual-/blob/main/Images/ExactChange.png" height="200px" width="400px"></kbd><br>
 
 ---
 
