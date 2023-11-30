@@ -38,8 +38,12 @@ sudo apt install pymysql
 ```console
 sudo apt install StringIO
 ```
+```console
+sudo apt install curl
+```
 <div id='InsertingIndexFile'/>
 
+UPLOAD index5.py file which is your api
 
 <div id='torun'/>
 To Run API
@@ -50,6 +54,18 @@ python3 index.py
 
 
 <div id='InsertJsonFile/>
+ 
+add.json file 
+
+{
+	"meal":1,
+	"dessert_side":1,
+	"entree":1,
+	"soup":1,
+	"cookie":1,
+	"roll":1,
+	"description":"test"
+}
 
 
 <div id='TestIndexFile'/>
