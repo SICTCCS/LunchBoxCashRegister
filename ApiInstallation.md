@@ -33,9 +33,11 @@ sudo apt install vim
 sudo apt-get install python3-flask
 ```
 ```console
-sudo apt install
+sudo apt install pymysql
 ```
-
+```console
+sudo apt install StringIO
+```
 <div id='InsertingIndexFile'/>
 
 
@@ -49,9 +51,20 @@ python3 index.py
 
 <div id='InsertJsonFile/>
 
+
 <div id='TestIndexFile'/>
 
+To test upload
+
+```console
+curl -s -X POST -H "Content-Type: application/json" -d "@json/add_data.json" http://localhost:8000 | jq .
+```
+
 <div id='OpenWebPage'/>
+
+To open web page
+
+http://10.60.4.150:8000
 
 
 
