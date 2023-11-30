@@ -355,6 +355,11 @@ After that , this will be a random insert to assure your database is working pro
 INSERT INTO mainDatabase (mainMealQuantity, dessertQuantity, entreQuantity, soupQuantity, cookieQuantity, rollQuantity, description) VALUES (1,1,1,1,1,1,"firstorder");
 ```
 
+Should like something like this after you're done.
+
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/screenshotofdatabase.png" height="500px"
+ width="2000px">
+
 <br>
  
 ## Shortcuts Commands and Cheatsheet
