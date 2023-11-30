@@ -89,7 +89,7 @@ To process payments, follow these steps:
 - Add specific amounts (1, 5, 10, 20,50 100) to the "Amount Given" field.
 -Exact change button in order to calculate the exact amount of change without having to press two buttons.
 -
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/ExactChange.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/ExactChange.png" height="200px" width="800px"></kbd><br>
 
 ---
 
