@@ -47,22 +47,22 @@ Upon launching the Cash Register App, you will be presented with the main screen
 ### On-Tray Items
 - Use the respective "Add" and "Del" buttons to manage quantities.
 - Each addition increases the total price by $3.
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/tree/main/Images/Entree Item.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Entree%20Item.png" height="200px" width="400px"></kbd><br>
 
 ### Roll Items
 - Adjust quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $0.50.
-<img src="https://github.co/SICTCCS/LunchBoxCashRegister/tree/main/Images/Roll Item.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Roll%20Item.png" height="200px" width="400px"></kbd><br>
 
 ### Dessert Items
 - Modify quantities with the "Add" and "Del" buttons.
 - Each addition increases the total price by $2.
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/tree/main/Images/Dessert Item.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Dessert%20Item.png" height="200px" width="400px"></kbd><br>
 
 ### Cookie Items
 - Manage quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $1.
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/tree/main/Images/Cookie Item.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Cookie%20Item.png" height="200px" width="400px"></kbd><br>
 
 ---
 
@@ -73,7 +73,7 @@ To process payments, follow these steps:
 1. Enter the amount given by the customer in the "Amount Given" field.
 2. Press the "Calculate" button.
 3. The change due to the customer will be displayed.
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/tree/main/Images//SICTCCS/LunchBoxCashRegister/tree/main/Images/Payments.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payment.png" height="200px" width="400px"></kbd><br>
 
 ---
 
@@ -83,7 +83,7 @@ To process payments, follow these steps:
 - Click the "More Options" button to access extra functionalities.
 - Add specific amounts (1, 5, 10, 20,50 100) to the "Amount Given" field.
 -Exact change button in order to calculate the exact amount of change without having to press two buttons.
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/tree/main/Images/ExactChange.png" height="200px" width="400px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/ExactChange.png" height="200px" width="400px"></kbd><br>
 
 ---
 
