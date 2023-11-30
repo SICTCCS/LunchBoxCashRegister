@@ -78,7 +78,7 @@ To process payments, follow these steps:
 2. Press the "Calculate" button.
 3. The change due to the customer will be displayed.
  -  
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payment.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payments.png" height="100px" width="100px"></kbd><br>
 
 ---
 
