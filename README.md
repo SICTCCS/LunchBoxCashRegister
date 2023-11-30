@@ -42,7 +42,7 @@ Upon launching the Cash Register App, you will be presented with the main screen
 - Use the "Del" button to decrease the quantity.
 - Each addition increases the total price by $8.
 - 
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Meal%20Item.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Meal%20Item.png" height="400px" width="800px"></kbd><br>
 
 ### On-Tray Items
 - Use the respective "Add" and "Del" buttons to manage quantities.
@@ -78,7 +78,7 @@ To process payments, follow these steps:
 2. Press the "Calculate" button.
 3. The change due to the customer will be displayed.
  -  
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payments.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payments.png" height="400px" width="900px"></kbd><br>
 
 ---
 
