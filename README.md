@@ -47,8 +47,8 @@ Upon launching the Cash Register App, you will be presented with the main screen
 ### On-Tray Items
 - Use the respective "Add" and "Del" buttons to manage quantities.
 - Each addition increases the total price by $3.
-- 
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Entree%20Item.png" height="100px" width="100px"></kbd><br>
+  
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Entree%20Item.png" height="200px" width="800px"></kbd><br>
 
 ### Roll Items
 - Adjust quantities using the "Add" and "Del" buttons.
