@@ -1,7 +1,6 @@
 ## Table of Contents
 [Overview](#overview)<br>
 [Installing Dependencies](#installdependencies)<br>
-[To Run File](#torun)<br>
 [To Insert File](#InsertingIndexFile)<br>
 [To Run File](#torun)<br>
 [Insert Json File](#InsertJsonFile)<br>
