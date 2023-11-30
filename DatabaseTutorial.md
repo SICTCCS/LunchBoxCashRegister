@@ -149,14 +149,14 @@ This means you are now in the database application, but you still need to make a
 
 <br>
  
-## Create lunchboxdb
+## Create lunchbox
  
-So now you got in the database, now you need to create the example database. Type the command into your terminal and hit <b>Enter</b>. For our first test case, we are going to create a new database called <b>lunchboxdb</b>.
+So now you got in the database, now you need to create the example database. Type the command into your terminal and hit <b>Enter</b>. For our first test case, we are going to create a new database called <b>lunchbox</b>.
 
 ##### Raspberry Pi terminal
 
 ```mysql
-CREATE DATABASE lunchboxdb;
+CREATE DATABASE lunchbox;
 ```
 This will result in a query taking place. You should see a similar message below.
 
@@ -175,7 +175,7 @@ MariaDB [none]> CREATE USER test01
  
 The database is just waiting on you to finish the command. Simply press the <b>;</b> key and the command will either succeed or fail.
 
-Let's break down the command you just ran. Simply put, the Command `CREATE DATABASE` is initializing a new database, which we are calling `lunchboxdb`. 
+Let's break down the command you just ran. Simply put, the Command `CREATE DATABASE` is initializing a new database, which we are calling `lunchbox`. 
 
 In the database, we can begin to build a selection of categories for our data, called <b>Tables</b>. These tables will hold the actual data and have the specific table categories separated by <b>columns</b>. The columns will have specific requirements to fill in for each record that goes into the table. Each record that is created represents a <b>row</b>
 
@@ -192,7 +192,7 @@ If you want to see if your database has been created, run the command `SHOW DATA
 ##### Raspberry Pi terminal
 
 ```console
-MariaDB [(none)]> CREATE DATABASE lunchboxdb;
+MariaDB [(none)]> CREATE DATABASE lunchbox;
 Query OK, 1 row affected (0.001 sec)
 
 MariaDB [(none)]> SHOW Databases;
@@ -200,7 +200,7 @@ MariaDB [(none)]> SHOW Databases;
 | Database           |
 +--------------------+
 | IoT                |
-| lunchboxdb          |
+| lunchbox           |
 | information_schema |
 | mysql              |
 | performance_schema |
@@ -279,10 +279,10 @@ To correct this, we want to grant all privileges to our new user. Run the comman
 ##### Raspberry Pi terminal
 
 ```mysql
-GRANT ALL PRIVILEGES ON lunchboxdb.* TO 'sictc'@'localhost';
+GRANT ALL PRIVILEGES ON lunchbox.* TO 'sictc'@'localhost';
 ```
 
-This grants the user <b>sictc</b> the ability to do anything on the database <b>lunchboxdb</b>. This will allow the user we are creating to manipulate the data for any tables on the database for `lunchboxdb`. This will allow the user sictc to create, add, alter, delete, update, and more while logged in.
+This grants the user <b>sictc</b> the ability to do anything on the database <b>lunchbox</b>. This will allow the user we are creating to manipulate the data for any tables on the database for `lunchbox`. This will allow the user sictc to create, add, alter, delete, update, and more while logged in.
 
 Let's save these changes to our new user. Run the command below to ensure the newly created user can access the database.
 
@@ -297,7 +297,7 @@ So by end of this, you should have run something similar below.
 ##### Raspberry Pi terminal
 
 ```console
-MariaDB [(none)]> GRANT ALL PRIVILEGES ON lunchboxdb.* TO 'sictc'@'localhost';
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON lunchbox.* TO 'sictc'@'localhost';
 Query OK, 0 rows affected (0.001 sec)
 
 MariaDB [(none)]> FLUSH PRIVILEGES;
@@ -382,7 +382,7 @@ For MySQL
 |---|---|
 |`sudo mysql -u sictc -p`| Login to MySQL console. |
 |`quit;` or `CTRL+D` | Command to exit MySQL console. |
-|`lunchboxdb`| MySQL database. |
+|`lunchbox`| MySQL database. |
 |`Password1`| MySQL root password. |
 |`sictc`| MySQL exampledb user. |
 |`Pencil1`| MySQL exampledb password. |
