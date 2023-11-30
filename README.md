@@ -54,19 +54,19 @@ Upon launching the Cash Register App, you will be presented with the main screen
 - Adjust quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $0.50.
 - 
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Roll%20Item.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Roll%20Item.png" height="200px" width="800px"></kbd><br>
 
 ### Dessert Items
 - Modify quantities with the "Add" and "Del" buttons.
 - Each addition increases the total price by $2.
 - 
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Dessert%20Item.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Dessert%20Item.png" height="200px" width="800px"></kbd><br>
 
 ### Cookie Items
 - Manage quantities using the "Add" and "Del" buttons.
 - Each addition increases the total price by $1.
 - 
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Cookie%20Item.png" height="100px" width="100px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Cookie%20Item.png" height="200px" width="800px"></kbd><br>
 
 ---
 
@@ -78,7 +78,7 @@ To process payments, follow these steps:
 2. Press the "Calculate" button.
 3. The change due to the customer will be displayed.
  -  
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payments.png" height="400px" width="900px"></kbd><br>
+<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Payments.png" height="200px" width="800px"></kbd><br>
 
 ---
 
