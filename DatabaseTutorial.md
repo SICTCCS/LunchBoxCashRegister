@@ -1,8 +1,8 @@
-# (Part 1) Database (MySQL).
+# Database (MySQL).
  
  
 ## Overview
-In this tutorial we will set up MySQL on the Raspberry Pi.  MySQL hosts the database used by our web application and accompanying APIs. In this example I am using the Raspberry Pi 3 Model B v1.2. Over the course of the next five lessons, you should have a working database that we can use.
+In this tutorial we will set up MySQL on the Raspberry Pi.  MySQL hosts the database used by our web application and accompanying APIs. In this example I am using the Raspberry Pi 3 Model B v1.2. Over the course of the next five lessons, you should have a working database that we can use. And also how to create the luncboxdb and also how to insert into the table.
 
 <br>
  
