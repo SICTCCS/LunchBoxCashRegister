@@ -36,7 +36,7 @@ Identify the Process ID (PID):
 First, identify the process ID (PID) of the running Python script using the pgrep command. Replace "your_script.py" with the actual name of your script.
 
 ```console
-pgrep -f your_script.py
+pgrep -f index5.py
 ```
 
 This command will output the PID of the running Python script.
