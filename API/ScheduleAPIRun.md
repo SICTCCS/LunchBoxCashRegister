@@ -28,7 +28,7 @@ This is to stop the api at 3:30
 
 Here is a example of the code
 
-[Link Text](file.txt)
+[Click Here](file.txt)
 
 
 
