@@ -26,8 +26,13 @@ This is to stop the api at 3:30
 30 15 * * 1-5 pkill -f /home/pi/Documents/web/api/py/src/iotapi/index5.py  > /home/pi/Documents/output.log 2>&1
 ```
 
-To save it type control o, then press enter, last press control x
+Here is a example of the code
 
+[Link Text](file.txt)
+
+
+
+Save the file and it should work automatically 
 
 ## Debugging tips
 
