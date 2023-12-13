@@ -26,7 +26,7 @@ This is to stop the api at 3:30
 30 15 * * 1-5 pkill -f /home/pi/Documents/web/api/py/src/iotapi/index5.py  > /home/pi/Documents/output.log 2>&1
 ```
 
-Here is a example of the code
+Here is a example of what the file should look like
 
 [Click Here](file.txt)
 
