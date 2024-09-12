@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
         TextView rollitemDisTxt = findViewById(R.id.textView5);
         TextView desertItemDisTxT = findViewById(R.id.textView6);
         TextView cookieItemDisTxT = findViewById(R.id.textView14);
-        TextView totalPriceDisTXT = findViewById(R.id.textView2);
-        TextView disChangeBackTXT = findViewById(R.id.textView7);
-        EditText amountGivenTXT = findViewById(R.id.editTextText);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
 
@@ -61,36 +58,22 @@ public class MainActivity extends AppCompatActivity {
         Button desertItemDelBTN = findViewById(R.id.button27);
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
-        Button expandOptionsBTN = findViewById(R.id.expandOptionsBTN);
-        Button oneDollarAddBTN = findViewById(R.id.button7);
-        Button fiveDollarAddBTN = findViewById(R.id.button9);
-        Button tenDollarAddBTN = findViewById(R.id.button2);
-        Button twentyDollarAddBTN = findViewById(R.id.button5);
-        Button fityDollarAddBTN = findViewById(R.id.button8);
-        Button hundredDollarAddBTN = findViewById(R.id.button16);
-        Button exactDollarAddBTN = findViewById(R.id.button18);
+
 
         Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
-        LinearLayout outPutCostLayout = findViewById(R.id.outPutCostLayout);
         LinearLayout newOrderLayout = findViewById(R.id.newOrderLayout);
         LinearLayout inputLayout = findViewById(R.id.inputLayout);
-        LinearLayout fieldDisplayLayout = findViewById(R.id.fieldDisplayLayout);
         LinearLayout buttonExraLayout = findViewById(R.id.buttonExraLayout);
         LinearLayout mainButtonLayout = findViewById(R.id.mainButtonLayout);
 
 
-        outPutCostLayout.setVisibility((View.GONE));
         newOrderLayout.setVisibility((View.GONE));
         resetBTN.setVisibility((View.GONE));
-        buttonExraLayout.setVisibility((View.GONE));
-        expandOptionsBTN.setVisibility(View.VISIBLE);
+        buttonExraLayout.setVisibility((View.VISIBLE));
 
         inputLayout.setVisibility((View.VISIBLE));
-        fieldDisplayLayout.setVisibility((View.VISIBLE));
         mainButtonLayout.setVisibility((View.VISIBLE));
-        expandOptionsBTN.setText("More Options");
-
 
 
 
@@ -102,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total+=8;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -115,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                     //outputTXT.setText(entree);
                     mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                     total -= 8;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
             }
@@ -128,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                 total += 3;
-                totalPriceDisTXT.setText("$" + Double.toString(total));
             }
 
         });
@@ -141,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     //outputTXT.setText(entree);
                     onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                     total -= 3;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
             }
@@ -153,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 total+=.5;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -167,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
                     //outputTXT.setText(entree);
                     rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                     total -= .5;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
             }
@@ -179,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                 total+=2;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
 
 
             }
@@ -193,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
                     //outputTXT.setText(entree);
                     desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                     total -= 2;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
             }
@@ -206,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 total += 1;
-                totalPriceDisTXT.setText("$" + Double.toString(total));
 
 
             }
@@ -220,147 +194,13 @@ public class MainActivity extends AppCompatActivity {
                     //outputTXT.setText(entree);
                     cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                     total -= 1;
-                    totalPriceDisTXT.setText("$" + Double.toString(total));
 
                 }
             }
         });
-        oneDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1++;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1++;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-
-
-            }
-        });
-        fiveDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1+=5;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=5;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-
-
-            }
-        });
-        tenDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1+=10;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=10;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-
-            }
-        });
-        twentyDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1+=20;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=20;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-
-
-            }
-        });
-        fityDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1+=50;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=50;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-            }
-        });
-        hundredDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1+=100;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=100;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-            }
-        });
-        exactDollarAddBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                try  {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    num1=total;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-                catch (Exception e){
-                    double num1=0;
-                    num1+=total;
-                    amountGivenTXT.setText(Double.toString(num1));
-                }
-            }
-        });
-
-        expandOptionsBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                if (buttonExraLayout.getVisibility() == View.GONE) {
-                    buttonExraLayout.setVisibility((View.VISIBLE));
-                    expandOptionsBTN.setText("Collapse");
-                    mainButtonLayout.setVisibility((View.GONE));
-
-                }
-                else{
-                    buttonExraLayout.setVisibility((View.GONE));
-                    expandOptionsBTN.setText("");
-                    expandOptionsBTN.setText("More Options");
-                    mainButtonLayout.setVisibility((View.VISIBLE));
 
 
 
-                }
-
-
-
-            }
-        });
         resetBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -371,23 +211,17 @@ public class MainActivity extends AppCompatActivity {
                 mainTrayIncr = 0;
                 dessert_sideIncr = 0;
                 cookieItemIncr = 0;
-                totalPriceDisTXT.setText("$"+Double.toString(total));
-                disChangeBackTXT.setText("$0.00");
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
                 onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 mainButtonLayout.setVisibility((View.VISIBLE));
-                amountGivenTXT.setText("");
-                outPutCostLayout.setVisibility((View.GONE));
                 newOrderLayout.setVisibility((View.GONE));
                 resetBTN.setVisibility((View.GONE));
 
                 inputLayout.setVisibility((View.VISIBLE));
-                fieldDisplayLayout.setVisibility((View.VISIBLE));
-                buttonExraLayout.setVisibility((View.GONE));
-                expandOptionsBTN.setVisibility(View.VISIBLE);
+                buttonExraLayout.setVisibility((View.VISIBLE));
 
 
 
@@ -401,19 +235,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 //(!amountGivenTXT.equals(""))
 
-                try {
-                    double num1 = Double.parseDouble(amountGivenTXT.getText().toString());
-                    disChangeBackTXT.setText("$" + Double.toString(num1 - total));
-                }
 
-                catch (Exception e){
-                    disChangeBackTXT.setText("$"+Double.toString(-total));
-
-                }
                     //String url = "http://172.16.1.230:8000/add_data";
                     //String url = "http://10.60.4.30:8000/add_data";
-                    String url = "http://10.60.4.150:8000/add_data";
+//                    String url = "http://10.60.4.150:8000/add_data";
 
+                      String url = "http://172.16.0.190:8000/add_data";
                     HashMap<String, String> params = new HashMap<String, String>();
 
                     params.put("meal", String.valueOf(mainTrayIncr));
@@ -483,16 +310,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //outputTXT.setText(entree);
 
-                outPutCostLayout.setVisibility((View.VISIBLE));
                 newOrderLayout.setVisibility((View.VISIBLE));
                 resetBTN.setVisibility((View.VISIBLE));
                 mainButtonLayout.setVisibility((View.GONE));
 
                 inputLayout.setVisibility((View.VISIBLE));
-                fieldDisplayLayout.setVisibility((View.VISIBLE));
                 buttonExraLayout.setVisibility((View.GONE));
-                amountGivenTXT.onEditorAction(EditorInfo.IME_ACTION_DONE);
-                expandOptionsBTN.setVisibility(View.GONE);
 
 
             }
