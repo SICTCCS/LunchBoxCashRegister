@@ -60,20 +60,16 @@ public class MainActivity extends AppCompatActivity {
         Button cookieItemDelBTN = findViewById(R.id.button4);
 
 
-        Button resetBTN = findViewById(R.id.button);
         Button calcBTN = findViewById(R.id.button6);
-        LinearLayout newOrderLayout = findViewById(R.id.newOrderLayout);
         LinearLayout inputLayout = findViewById(R.id.inputLayout);
         LinearLayout buttonExraLayout = findViewById(R.id.buttonExraLayout);
         LinearLayout mainButtonLayout = findViewById(R.id.mainButtonLayout);
 
-
-        newOrderLayout.setVisibility((View.GONE));
-        resetBTN.setVisibility((View.GONE));
         buttonExraLayout.setVisibility((View.VISIBLE));
 
         inputLayout.setVisibility((View.VISIBLE));
         mainButtonLayout.setVisibility((View.VISIBLE));
+        calcBTN.setVisibility((View.VISIBLE));
 
 
 
@@ -201,35 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        resetBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                entreeIncr = 0;
-                total = 0.00;
-                rollItemIncr = 0;
-                soupItemIncr = 0;
-                mainTrayIncr = 0;
-                dessert_sideIncr = 0;
-                cookieItemIncr = 0;
-                cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
-                desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
-                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
-                onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
-                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
-                mainButtonLayout.setVisibility((View.VISIBLE));
-                newOrderLayout.setVisibility((View.GONE));
-                resetBTN.setVisibility((View.GONE));
 
-                inputLayout.setVisibility((View.VISIBLE));
-                buttonExraLayout.setVisibility((View.VISIBLE));
-
-
-
-
-
-
-            }
-        });
         calcBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -310,12 +278,20 @@ public class MainActivity extends AppCompatActivity {
 
                 //outputTXT.setText(entree);
 
-                newOrderLayout.setVisibility((View.VISIBLE));
-                resetBTN.setVisibility((View.VISIBLE));
-                mainButtonLayout.setVisibility((View.GONE));
+                entreeIncr = 0;
+                total = 0.00;
+                rollItemIncr = 0;
+                soupItemIncr = 0;
+                mainTrayIncr = 0;
+                dessert_sideIncr = 0;
+                cookieItemIncr = 0;
+                cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
+                desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
+                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
 
-                inputLayout.setVisibility((View.VISIBLE));
-                buttonExraLayout.setVisibility((View.GONE));
+
 
 
             }
