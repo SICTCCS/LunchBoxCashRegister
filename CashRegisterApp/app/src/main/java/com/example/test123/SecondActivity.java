@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
     int entreeIncr = 0;
     int mainTrayIncr =0;
     int rollItemIncr = 0;
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
     int soupItemIncr = 0;
     double total = 0.00;
     private RequestQueue requestQueue;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "SecondActivity";
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         TextView mealItemDisTXT = findViewById(R.id.textView3);
         TextView onTrayItemDisTXT = findViewById(R.id.textView4);
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         switchLayoutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -217,24 +217,24 @@ public class MainActivity extends AppCompatActivity {
                 //(!amountGivenTXT.equals(""))
 
 
-                    //String url = "http://172.16.1.230:8000/add_data";
-                    //String url = "http://10.60.4.30:8000/add_data";
+                //String url = "http://172.16.1.230:8000/add_data";
+                //String url = "http://10.60.4.30:8000/add_data";
 //                    String url = "http://10.60.4.150:8000/add_data";
 
-                      String url = "http://172.16.0.190:8000/add_data";
-                    HashMap<String, String> params = new HashMap<String, String>();
+                String url = "http://172.16.0.190:8000/add_data";
+                HashMap<String, String> params = new HashMap<String, String>();
 
-                    params.put("meal", String.valueOf(mainTrayIncr));
-                    params.put("dessert_side", String.valueOf(dessert_sideIncr));
-                    params.put("entree", String.valueOf(entreeIncr));
-                    params.put("soup", String.valueOf(soupItemIncr));
-                    params.put("cookie", String.valueOf(cookieItemIncr));
-                    params.put("roll", String.valueOf(rollItemIncr));
+                params.put("meal", String.valueOf(mainTrayIncr));
+                params.put("dessert_side", String.valueOf(dessert_sideIncr));
+                params.put("entree", String.valueOf(entreeIncr));
+                params.put("soup", String.valueOf(soupItemIncr));
+                params.put("cookie", String.valueOf(cookieItemIncr));
+                params.put("roll", String.valueOf(rollItemIncr));
 
-                    //Log.d("requestURL", url);
+                //Log.d("requestURL", url);
 
 
-                    //Log.d("registerUser", String.valueOf(params));
+                //Log.d("registerUser", String.valueOf(params));
 
                 /*
 
@@ -264,14 +264,14 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // Handle the response
-                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SecondActivity.this, response, Toast.LENGTH_SHORT).show();
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // Handle the error
-                                Toast.makeText(MainActivity.this, "Contact Mr. Bander (Computer Science Room): " + error.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SecondActivity.this, "Contact Mr. Bander (Computer Science Room): " + error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }) {
                     @Override
