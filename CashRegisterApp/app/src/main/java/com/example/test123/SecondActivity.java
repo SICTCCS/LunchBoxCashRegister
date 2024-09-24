@@ -3,9 +3,7 @@ package com.example.test123;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -62,6 +60,12 @@ public class SecondActivity extends AppCompatActivity {
         Button desertItemDelBTN = findViewById(R.id.button27);
         Button cookieItemAddBTN = findViewById(R.id.button3);
         Button cookieItemDelBTN = findViewById(R.id.button4);
+        Button add1BTN = findViewById(R.id.button10);
+        Button add2BTN = findViewById(R.id.button11);
+        Button add3BTN = findViewById(R.id.button12);
+        Button add4BTN = findViewById(R.id.button15);
+        Button add5BTN = findViewById(R.id.button17);
+        Button add6BTN = findViewById(R.id.button18);
         ImageButton switchLayoutBTN = findViewById(R.id.imageButton1);
 
 
@@ -85,6 +89,72 @@ public class SecondActivity extends AppCompatActivity {
                 //outputTXT.setText(entree);
                 mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
                 total+=8;
+
+
+            }
+        });
+        add1BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr++;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8;
+
+
+            }
+        });
+        add2BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr+=2;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8*2;
+
+
+            }
+        });
+        add3BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr+=3;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8*3;
+
+
+            }
+        });
+        add4BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr+=4;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8*4;
+
+
+            }
+        });
+        add5BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr+=5;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8*5;
+
+
+            }
+        });
+        add6BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mainTrayIncr+=6;
+                //outputTXT.setText(entree);
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+                total+=8*6;
 
 
             }

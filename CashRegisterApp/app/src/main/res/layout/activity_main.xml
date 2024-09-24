@@ -22,335 +22,416 @@
 
 
         <LinearLayout
-            android:id="@+id/mainButtonLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="498dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="238dp"
+                android:layout_width="590dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/imageButton1"
-                    android:layout_width="72dp"
+                    android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="Switch Layout"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitStart"
                     android:tag="left"
                     app:srcCompat="@drawable/palm" />
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_weight="1"
-                    android:padding="5dp"
+                    android:layout_height="90dp"
+                    android:padding="0dp"
                     android:text="MEALS"
                     android:textAlignment="center"
                     android:textSize="75sp" />
+
+                <LinearLayout
+                    android:id="@+id/mainButtonLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="126dp"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/button14"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:backgroundTint="#335879	"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textSize="60sp"
+                        app:cornerRadius="50sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="104dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="96sp" />
+
+                    <Button
+                        android:id="@+id/button13"
+                        android:layout_width="150sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:backgroundTint="#707f42"
+                        android:padding="10dp"
+                        android:shape="oval"
+                        android:text=" + "
+                        android:textAlignment="center"
+                        android:textSize="70sp"
+                        app:cornerRadius="50sp"
+                        tools:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="122dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button10"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                    <Button
+                        android:id="@+id/button11"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                    <Button
+                        android:id="@+id/button12"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button15"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                    <Button
+                        android:id="@+id/button17"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                    <Button
+                        android:id="@+id/button18"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="20dp"
+                        android:shape="oval"
+                        android:text="6"
+                        android:textAlignment="center"
+                        android:textSize="48sp"
+                        app:cornerRadius="50sp" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/button14"
-                android:layout_width="110dp"
+            <LinearLayout
+                android:id="@+id/buttonExraLayout"
+                android:layout_width="590dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#335879	"
-                android:padding="20dp"
-                android:shape="oval"
-                android:text=" - "
-                android:textAlignment="center"
-                android:textSize="100dp"
-                app:cornerRadius="50sp" />
-
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/button13"
-                android:layout_width="102dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="#707f42"
-                android:padding="20dp"
-                android:shape="oval"
-                android:text=" + "
-                android:textAlignment="center"
-                android:textSize="100dp"
-                app:cornerRadius="50sp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="136dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="0"
-                android:textAlignment="center"
-                android:textSize="96sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/buttonExraLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-
-            <LinearLayout
-                android:id="@+id/item6"
-                style="@style/style"
-                android:layout_height="67dp">
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="240dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Dessert/Side"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-
-                <Button
-                    android:id="@+id/button27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#335879	"
-                    android:padding="2dp"
-                    android:text=" - "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#707f42	"
-                    android:padding="2dp"
-                    android:text=" + "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="112dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/item4"
-                android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="visible">
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="234dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Entree item"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-
-                <Button
-                    android:id="@+id/button25"
-                    android:layout_width="74dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#335879"
-                    android:padding="2dp"
-                    android:text=" - "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#707f42	"
-                    android:padding="2dp"
-                    android:text=" + "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
 
                 <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="103dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="0"
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="94dp"
+                    android:text="Extras"
                     android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
+                    android:textSize="60sp" />
+
+                <LinearLayout
+                    android:id="@+id/item6"
+                    style="@style/style"
+                    android:layout_height="91dp">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="Dessert/Side"
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:visibility="visible" />
+
+
+                    <Button
+                        android:id="@+id/button27"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="2dp"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="10dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/button26"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42	"
+                        android:padding="2dp"
+                        android:text=" + "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/item4"
+                    android:layout_width="match_parent"
+                    android:layout_height="91dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="Entree item"
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:visibility="visible" />
+
+
+                    <Button
+                        android:id="@+id/button25"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879"
+                        android:padding="2dp"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/button24"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42	"
+                        android:padding="2dp"
+                        android:text=" + "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item7"
+                    android:layout_width="match_parent"
+                    android:layout_height="91dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="Cookie item"
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:visibility="visible" />
+
+
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879	"
+                        android:padding="2dp"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42	"
+                        android:padding="2dp"
+                        android:text=" + "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item5"
+                    android:layout_width="match_parent"
+                    android:layout_height="91dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="Roll item "
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:visibility="visible" />
+
+
+                    <Button
+                        android:id="@+id/button29"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#335879"
+                        android:padding="2dp"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:padding="5dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/button28"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#707f42	"
+                        android:padding="2dp"
+                        android:text=" + "
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/item7"
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="227dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Cookie item"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="65dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#335879	"
-                    android:padding="2dp"
-                    android:text=" - "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="76dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#707f42	"
-                    android:padding="2dp"
-                    android:text=" + "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="95dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/item5"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="221dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Roll item "
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-
-                <Button
-                    android:id="@+id/button29"
-                    android:layout_width="75dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#335879"
-                    android:padding="2dp"
-                    android:text=" - "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button28"
-                    android:layout_width="74dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#707f42	"
-                    android:padding="2dp"
-                    android:text=" + "
-                    android:textAlignment="center"
-                    android:textSize="30dp"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textSize="25dp"
-                    android:visibility="visible" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="44dp" />
         </LinearLayout>
 
         <!--8 dollar and a 16 dollar button-->
@@ -358,19 +439,40 @@
         <LinearLayout
             android:id="@+id/inputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="97dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="1019dp"
-                android:layout_height="74dp"
-                android:layout_weight="6"
+                android:layout_width="600dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
                 android:backgroundTint="#335879"
-                android:text="FINISH"
+                android:text="DINE-IN"
                 android:textAlignment="center"
-                android:textSize="45sp" />
+                android:textSize="60sp"
+                app:cornerRadius="0sp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="#000000"
+                android:foregroundTint="#000000" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="600dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:backgroundTint="#707f42	"
+                android:text="TO-GO"
+                android:textAlignment="center"
+                android:textSize="60sp"
+                app:cornerRadius="0sp" />
 
 
         </LinearLayout>
