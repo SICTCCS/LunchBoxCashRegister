@@ -1,0 +1,16 @@
+logIn(
+
+)
+
+logOut(
+
+)
+
+document.querySelector('.login-btn').addEventListener('click', function() {
+    // Add your logout functionality here
+    alert('Logging in...');
+});
+document.querySelector('.logout-btn').addEventListener('click', function() {
+    // Add your logout functionality here
+    alert('Logging out...');
+});
