@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         mainButtonLayout.setVisibility((View.VISIBLE));
         calcBTN.setVisibility((View.VISIBLE));
 
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
 
         mainAddBTN.setOnClickListener(new View.OnClickListener() {

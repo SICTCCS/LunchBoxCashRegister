@@ -31,6 +31,7 @@ public class SecondActivity extends AppCompatActivity {
     int cookieItemIncr = 0 ;
     int soupItemIncr = 0;
     double total = 0.00;
+    boolean togoItem = false;
     private RequestQueue requestQueue;
     private static final String TAG = "SecondActivity";
 
@@ -70,6 +71,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
         Button calcBTN = findViewById(R.id.button6);
+        Button togoBTN = findViewById(R.id.button7);
         LinearLayout inputLayout = findViewById(R.id.inputLayout);
         LinearLayout buttonExraLayout = findViewById(R.id.buttonExraLayout);
         LinearLayout mainButtonLayout = findViewById(R.id.mainButtonLayout);
@@ -80,7 +82,7 @@ public class SecondActivity extends AppCompatActivity {
         mainButtonLayout.setVisibility((View.VISIBLE));
         calcBTN.setVisibility((View.VISIBLE));
 
-
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         mainAddBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,6 +302,108 @@ public class SecondActivity extends AppCompatActivity {
                 params.put("soup", String.valueOf(soupItemIncr));
                 params.put("cookie", String.valueOf(cookieItemIncr));
                 params.put("roll", String.valueOf(rollItemIncr));
+                params.put("togo",String.valueOf(togoItem));
+
+                //Log.d("requestURL", url);
+
+
+                //Log.d("registerUser", String.valueOf(params));
+
+                /*
+
+                    JsonObjectRequest r = new JsonObjectRequest(url, new JSONObject(params),
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    //Toast.makeText(MainActivity.this,"HURRRAAAAYYYYY",Toast.LENGTH_SHORT).show();
+                                    //Log.d("Adding data", String.valueOf(response));
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Log.d("String to JSON",error.toString());
+                            Toast.makeText(MainActivity.this,"t" + error,Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+
+
+
+                    requestQueue.add(r);
+                    */
+                StringRequest request = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Handle the response
+                                Toast.makeText(SecondActivity.this, response, Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // Handle the error
+                                Toast.makeText(SecondActivity.this, "Contact Mr. Bander (Computer Science Room): " + error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }) {
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        // Convert the HashMap to a JSON string
+                        return new JSONObject(params).toString().getBytes();
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+                };
+
+                requestQueue.add(request);
+
+
+                //outputTXT.setText(entree);
+
+                entreeIncr = 0;
+                total = 0.00;
+                rollItemIncr = 0;
+                soupItemIncr = 0;
+                mainTrayIncr = 0;
+                dessert_sideIncr = 0;
+                cookieItemIncr = 0;
+                togoItem = false;
+                cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
+                desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
+                rollitemDisTxt.setText(Integer.toString(rollItemIncr));
+                onTrayItemDisTXT.setText(Integer.toString(entreeIncr));
+                mealItemDisTXT.setText(Integer.toString(mainTrayIncr));
+
+
+
+
+            }
+        });
+        togoBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                //(!amountGivenTXT.equals(""))
+
+                togoItem=true;
+
+                //String url = "http://172.16.1.230:8000/add_data";
+                //String url = "http://10.60.4.30:8000/add_data";
+//                    String url = "http://10.60.4.150:8000/add_data";
+
+                String url = "http://172.16.0.190:8000/add_data";
+                HashMap<String, String> params = new HashMap<String, String>();
+
+                params.put("meal", String.valueOf(mainTrayIncr));
+                params.put("dessert_side", String.valueOf(dessert_sideIncr));
+                params.put("entree", String.valueOf(entreeIncr));
+                params.put("soup", String.valueOf(soupItemIncr));
+                params.put("cookie", String.valueOf(cookieItemIncr));
+                params.put("roll", String.valueOf(rollItemIncr));
+                params.put("togo",String.valueOf(togoItem));
 
                 //Log.d("requestURL", url);
 
@@ -368,6 +472,7 @@ public class SecondActivity extends AppCompatActivity {
                 mainTrayIncr = 0;
                 dessert_sideIncr = 0;
                 cookieItemIncr = 0;
+                togoItem=false;
                 cookieItemDisTxT.setText(Integer.toString(cookieItemIncr));
                 desertItemDisTxT.setText(Integer.toString(dessert_sideIncr));
                 rollitemDisTxt.setText(Integer.toString(rollItemIncr));
