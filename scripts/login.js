@@ -9,11 +9,11 @@ loginButton.addEventListener("click", (e) => {
 
     if (username === "admin" && password === "sictc!") {
         location.reload();
-        window.location.href = "data.html";
+        window.location.href = "pages/data.html";
     } 
     if (username === "chef" && password === "sictc!") {
         location.reload();
-        window.location.href = "data.html";
+        window.location.href = "pages/data.html";
     } 
     else {
         loginErrorMsg.style.opacity = 1;
