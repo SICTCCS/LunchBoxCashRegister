@@ -10,13 +10,13 @@ app = Flask(__name__)
 connection = pymysql.connect(
         host='localhost',
         user='root',
-        password='Password1',
+        password='root',
         database='lunchbox'
 )
 @app.route('/')
 def display_data():
     with connection.cursor() as cursor:
-        query = "SELECT * FROM FoodQuantity"
+        query = "SELECT * FROM mainDatabase"
         cursor.execute(query)
         rows = cursor.fetchall()
 
@@ -26,8 +26,8 @@ def display_data():
     userJsonData = []
 
     for row in sorted_data_byId:
-        meal, dessert_side, entree, soup, cookie, roll, description, data = row
-        table_row = f"<tr><td>{meal}</td><td>{dessert_side}</td><td>{entree}</td><td>{soup}</td><td>{cookie}</td><td>{roll}</td><td>{description}</td><td>{data}</td></tr>"
+        meal, dessert_side, entree, soup, cookie, roll, description, data, togo = row
+        table_row = f"<tr><td>{meal}</td><td>{dessert_side}</td><td>{entree}</td><td>{soup}</td><td>{cookie}</td><td>{roll}</td><td>{description}</td><td>{data}</td><td>{togo}</td></tr>"
         table_html += table_row
         data_dict = {
                 'meal': meal,
@@ -37,7 +37,8 @@ def display_data():
                 'cookie': cookie,
                 'roll': roll,
                 'description': description,
-                'data': data
+                'data': data,
+                'togo': togo
             }
         userJsonData.append(data_dict)
 
@@ -70,6 +71,7 @@ def input_data():
         cookie = data.get("cookie")
         roll = data.get("roll")
         description = data.get("description")
+        togo = data.get("togo")
     #print(mainMeal,dessert,entre,soup,cookie,roll,description)
 
     #try:
@@ -81,7 +83,7 @@ def input_data():
     
         
 
-    query=f'INSERT INTO FoodQuantity (meal, dessert_side, entree, soup, cookie, roll, description) VALUES ({meal},{dessert_side},{entree},{soup},{cookie},{roll},"{description}")'#(%s, %s, %s, %s, %s, %s, %s, %s)"
+    query=f'INSERT INTO FoodQuantity (meal, dessert_side, entree, soup, cookie, roll, description, togo) VALUES ({meal},{dessert_side},{entree},{soup},{cookie},{roll},"{description}",{togo})'#(%s, %s, %s, %s, %s, %s, %s, %s)"
     #query = f'INSERT INTO mainDatabase (mainMealQuantity, dessertQuantity, entreQuantity, soupQuantity, cookieQuantity, rollQuantity, description) VALUES (%s, %s, %s, %s, %s, %s, %s)'
     print(query)
     try:
