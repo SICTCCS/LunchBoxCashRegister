@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Lunch Box</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="scripts/login.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">
+            <img src="img/lbLogo.png" alt="Lunch Box" width="610" height="95"> 
+        </h1>
+    <div class="login-box">
+        <div id="login-error-msg-holder">
+            <p id="login-error-msg">Invalid login</p>
+        </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">
+                        <i class="fa fa-user"></i>
+                    </label>
+                    <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+                </div>
+                <div class="input-group">
+                    <label for="password">
+                        <i class="fa fa-lock"></i>
+                    </label>
+                    <input type="password" id="password-field" name="password" class="login-form-field" placeholder="Password">
+                </div>
+                <button type="submit" value="Login" id="login-form-submit" >LOG IN</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
