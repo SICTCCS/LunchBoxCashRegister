@@ -22,11 +22,13 @@
 
         <!-- Header with Logo and Logout Button -->
         <header>
-            <div class="header-content" method="POST" action="/">
+            <div class="header-content">
                 <h1 class="logo">
                     <img src="{{ url_for('static', filename='img/lbLogo.png') }}" alt="Lunch Box Logo" width="400" height="60">
                 </h1>
-                <button type="button" value="Logout" id="logout-form-submit">LOG OUT</button>
+                <form method="GET" action="{{ url_for('logout') }}">
+                    <button type="submit" id="logout-form-submit">LOG OUT</button>
+                </form>
             </div>
         </header>
 
