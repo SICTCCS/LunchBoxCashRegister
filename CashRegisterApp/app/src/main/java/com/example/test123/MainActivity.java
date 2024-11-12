@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                     //String url = "http://10.60.4.30:8000/add_data";
 //                    String url = "http://10.60.4.150:8000/add_data";
 
-                      String url = "http://172.16.0.190:8000/add_data";
+                      String url = "http://10.60.4.200:8000/add_data";
                     HashMap<String, String> params = new HashMap<String, String>();
 
                     params.put("meal", String.valueOf(mainTrayIncr));
@@ -396,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
                 //String url = "http://10.60.4.30:8000/add_data";
 //                    String url = "http://10.60.4.150:8000/add_data";
 
-                String url = "http://172.16.0.190:8000/add_data";
+                String url = "http://10.60.4.200:8000/add_data";
                 HashMap<String, String> params = new HashMap<String, String>();
 
                 params.put("meal", String.valueOf(mainTrayIncr));
