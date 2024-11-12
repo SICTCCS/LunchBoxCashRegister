@@ -1,5 +1,10 @@
 <<<<<<< HEAD
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, Response
+from io import StringIO
+import pymysql
+import calendar
+import csv
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Needed for flash messages
@@ -44,12 +49,6 @@ def logout():
     return redirect(url_for('login'))
 
 =======
-from flask import Flask, render_template, request, redirect, url_for, flash, session, Response
-from io import StringIO
-import pymysql
-import calendar
-import csv
-from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
