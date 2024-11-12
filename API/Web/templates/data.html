@@ -1,23 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - The Lunch Box</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script defer src="scripts/scripts.js"></script>
-    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+
+    <!-- External Scripts -->
+    <script defer src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+    <!-- Custom Styles -->
+	<style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 500px auto 0;
+        padding: 20px;
+    }
+
+    /* Scrollable container for the table */
+    .content-box {
+        max-height: 800px;   /* Set maximum height to allow scrolling */
+        height: 800px;       /* Fix the height of the scroll container */
+        border: 1px solid #ccc; /* Optional: visualize the content box */
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: #000;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropbtn {
+        display: inline-block;
+        font-weight: 400;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #315879;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .dropbtn:hover {
+        background-color: #193650;
+    }
+
+    .dropbtn2 {
+        display: inline-block;
+        font-weight: 400;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #708045;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .dropbtn2:hover {
+        color: #fff;
+        background-color: #006b00 !important;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid #dddddd;
+    }
+
+    th, td {
+        padding: 5px 12px;
+        width: 10%;
+    }
+
+    thead tr {
+        display: table;
+        width: 98.75%;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        position: sticky;  /* Sticky header */
+        top: 0;
+        z-index: 1;        /* Ensure it remains above the body rows */
+    }
+
+    tbody {
+        height: calc(800px - 45px);  /* Calculate height to fit within content-box */
+        overflow-y: scroll;    /* Enable scrolling for the tbody itself */
+    }
+
+    tbody tr {
+        display: table;        /* Still display rows as table rows */
+        width: 100%;           /* Ensure rows take up full width */
+        height: auto;
+    }
+
+    thead, tbody tr {
+        table-layout: fixed;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+</style>
+
 </head>
+
 <body>
     <div class="dashboard-container">
+
+        <!-- Header with Logo and Logout Button -->
         <header>
-            <h1 class="logo"><img src="../img/lbLogo.png" alt="Lunch Box" width="400" height="60"></h1>
-            <button type="submit" value="Logout" id="logout-form-submit"  >LOG OUT</button>
+            <div class="header-content">
+                <h1 class="logo">
+                    <img src="{{ url_for('static', filename='img/lbLogo.png') }}" alt="Lunch Box Logo" width="400" height="60">
+                </h1>
+                <form action="{{ url_for('logout') }}" method="GET">
+                    <button type="submit" style="border-radius:5px; background-color: #708045; font-size: 28px; position:relative; top:-90px; left:1000px;">LOG OUT</button>
+                </form>
+				<form action="{{ url_for('download_csv') }}" method="GET" style="display:inline-block;">
+					<input type="hidden" name="month" value="{{ request.args.get('month') }}">
+					<button type="submit" style="border-radius:5px; background-color: #708045; top:-152px; left: 550px; display:block; position:relative; font-size: 28px;">DOWNLOAD CURRENT DATA</button>
+				</form>
+
+			</div>
         </header>
-        <div class="content-box">
-            <!-- content LOL -->
-        </div>
+
+        <!-- Dropdown for months -->
+        <header class="d-lg-flex justify-content-center py-3 border-bottom" id="header-output">
+            <form action="{{ url_for('data') }}" method="GET">
+                <ul class="nav nav-pills">
+                    <li class="nav-item" style="padding-right:10px;">
+                        <div class="dropdown">
+                            <button class="dropbtn2">MONTHS  |    <i class="fa fa-caret-down"></i></button>
+                            <div class="dropdown-content">
+                                <a href="?month=January">January</a>
+                                <a href="?month=February">February</a>
+                                <a href="?month=March">March</a>
+                                <a href="?month=April">April</a>
+                                <a href="?month=May">May</a>
+                                <a href="?month=June">June</a>
+                                <a href="?month=July">July</a>
+                                <a href="?month=August">August</a>
+                                <a href="?month=September">September</a>
+                                <a href="?month=October">October</a>
+                                <a href="?month=November">November</a>
+                                <a href="?month=December">December</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </header>
+
+        <!-- Main Content Section with Table -->
+        <main>
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Meal</th>
+                            <th>Dessert</th>
+                            <th>Entree</th>
+                            <th>Soup</th>
+                            <th>Cookie</th>
+                            <th>Roll</th>
+                            <th>To Go</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in food_data %}
+                        <tr>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[7] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
     </div>
 </body>
+
 </html>
+
