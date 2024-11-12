@@ -9,8 +9,8 @@ app = Flask(__name__)
 # Database configuration
 connection = pymysql.connect(
         host='localhost',
-        user='root',
-        password='root',
+        user='api_user',
+        password='api_password',
         database='lunchbox'
 )
 @app.route('/')
@@ -61,7 +61,7 @@ def input_data():
     #cookieQuantity= 3
     #rollQuantity= 8
     #description='testing'
-
+    print(request)
     if request.is_json:
         data = request.get_json()
         meal = data.get("meal")
@@ -95,15 +95,15 @@ def input_data():
         connection.commit()
         #print("committed")
         out="finished"
-    except:
-        print("error")
+    except pymysql.Error as e:
+        print(e)
         return out
         #cursor.execute(query, (data['mainMealQuantity'], data['dessertQuantity'], data['entreQuantity'], data['soupQuantity'], data['cookieQuantity'], data['rollQuantity'], data['description'], data['data']))
         #connection.commit()
     #return redirect(url_for('getAll'))
     print("redirecting")
     return "succcess addition!"#redirect('/')
-
+    
 @app.route('/download_csv')
 def download_csv():
     print("Test")
