@@ -17,13 +17,15 @@ After the > it logs what it does, this is to debug
 This is to run the api at 10:01
 
 ```console
-01 10 * * 1-5 /usr/bin/python3 /home/pi/Documents/web/api/py/src/iotapi/index5.py  > /home/pi/Documents/output.log 2>&1
+01 06 * * 1-5 python3 /home/lb/Documents/LunchBoxRegister/API/Web/webRun.py
+01 10 * * 1-5 python3 /home/lb/Documents/LunchBoxRegister/API/index5.py 
 ```
 
 This is to stop the api at 3:30
 
 ```console
-30 15 * * 1-5 pkill -f /home/pi/Documents/web/api/py/src/iotapi/index5.py  > /home/pi/Documents/output.log 2>&1
+30 15 * * 1-5 kill -f /home/lb/Documents/LunchBoxRegister/API/index5.py 
+30 16 * * 1-5 kill -f /home/lb/Documents/LunchBoxRegister/API/Web/webRun.py
 ```
 
 Here is a example of what the file should look like
