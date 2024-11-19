@@ -8,6 +8,7 @@ INSTALL_DIR="/home/lb/Documents/LunchBoxCashRegister"
 API_DIR="${INSTALL_DIR}/API"
 VENV_DIR="${API_DIR}/venv"
 LOG_FILE="${API_DIR}/install.log"
+DB_ROOT_PASSWORD="Password1"  # Changed to Password1
 
 # Logging function
 log() {
@@ -43,7 +44,6 @@ log "Creating Python virtual environment..."
 python3 -m venv "${VENV_DIR}" --system-site-packages
 source "${VENV_DIR}/bin/activate"
 
-# No need to install Flask and PyMySQL via pip as they're installed system-wide
 log "Python packages already installed via apt"
 
 # Configure MariaDB
@@ -51,9 +51,25 @@ log "Configuring MariaDB..."
 systemctl start mariadb
 systemctl enable mariadb
 
+# Secure MariaDB installation and set root password
+log "Securing MariaDB installation..."
+mysql -u root <<EOF
+-- Set root password
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
+-- Remove anonymous users
+DELETE FROM mysql.user WHERE User='';
+-- Disallow root login remotely
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+-- Remove test database
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+-- Reload privilege tables
+FLUSH PRIVILEGES;
+EOF
+
 # Initialize database
 log "Initializing database..."
-"${VENV_DIR}/bin/python3" "${INSTALL_DIR}/DBSetup.py"
+MYSQL_PWD="${DB_ROOT_PASSWORD}" "${VENV_DIR}/bin/python3" "${INSTALL_DIR}/DBSetup.py"
 
 # Configure cron jobs with proper Python path
 log "Setting up cron jobs..."
@@ -81,3 +97,9 @@ if crontab -l >/dev/null 2>&1; then
 else
     log "WARNING: Cron configuration failed"
 fi
+
+# Print important information
+log "Installation completed. Important information:"
+log "Database root password: ${DB_ROOT_PASSWORD}"
+log "Please change this password in production!"
+log "To connect to MariaDB: mysql -u root -p"

@@ -32,7 +32,7 @@ logging.basicConfig(
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'Password1',  # Should be changed in production
+    'password': os.getenv('MYSQL_PWD', 'Password1'),  # Changed to Password1
     'database': 'lunchbox'
 }
 
