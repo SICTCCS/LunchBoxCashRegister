@@ -1,187 +1,164 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, request, redirect, url_for, flash, session, Response
-from io import StringIO
+#!/usr/bin/env python3
+
+"""
+Web Interface Server for LunchBox Cash Register System
+
+This script provides a web-based management interface for viewing
+transactions, generating reports, and managing the system.
+
+Features:
+- Transaction history viewing
+- Daily totals reporting
+- CSV export functionality
+- User authentication
+"""
+
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file
 import pymysql
-import calendar
 import csv
+from io import StringIO
 from datetime import datetime
+import logging
+from functools import wraps
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='web_interface.log'
+)
+
+# Initialize Flask application
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'  # Needed for flash messages
+app.secret_key = 'your-secret-key-here'  # Change in production
 
-# Dummy user for login authentication
-users = {
-    "chef": "Sictc1!",
-    "admin": "BakerHammonds"
+# Database configuration
+DB_CONFIG = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Password1',
+    'database': 'lunchbox'
 }
 
-# Route for the login page
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+def login_required(f):
+    """
+    Decorator to require login for protected routes
+    """
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('logged_in'):
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
 
-        # Check if the username and password match the dummy user
-        if username in users and users[username] == password:
-            session['user'] = username  # Store the user in session
-            return redirect(url_for('data'))  # Redirect to data page
-        else:
-            flash('Invalid login. Please try again.')
-            return render_template('index.html')
-
-    return render_template('index.html')
-
-
-# Route for the data page (after login)
-@app.route('/data', methods=['GET'])
-def data():
-    if 'user' in session:  # Ensure the user is logged in
-        return render_template('data.html')
-    else:
-        return redirect(url_for('login'))
-
-
-# Route for the logout functionality
-@app.route('/logout')
-def logout():
-    session.pop('user', None)  # Remove user from session
-    return redirect(url_for('login'))
-
-=======
-
-app = Flask(__name__)
-app.secret_key = 'supersecretkey'
-
-# Dummy user for login authentication
-users = {
-    "chef": "Sictc1!",
-    "admin": "BakerHammonds"
-}
-
-# Connect to the MySQL Database using PyMySQL
 def get_db_connection():
-    conn = pymysql.connect(
-        host="localhost",      # Update with your DB host
-        user="api_user",           # Update with your MySQL username
-        password="api_password",       # Update with your MySQL password
-        database="lunchbox"    # Update with your DB name
-    )
-    return conn
+    """
+    Create and return a database connection with error handling
+    """
+    try:
+        return pymysql.connect(**DB_CONFIG)
+    except Exception as e:
+        logging.error(f"Database connection failed: {str(e)}")
+        return None
 
-# Route for the login page
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-
-        # Check if the username and password match the dummy user
-        if username in users and users[username] == password:
-            session['user'] = username  # Store the user in session
-            return redirect(url_for('data'))  # Redirect to data page
-        else:
-            flash('Invalid login. Please try again.')
-            return render_template('index.html')
-
-    return render_template('index.html')
-
-# Route for the data page (after login)
-@app.route('/data', methods=['GET'])
-def data():
-    if 'user' in session:  # Ensure the user is logged in
+@app.route('/')
+@login_required
+def index():
+    """
+    Main dashboard page showing recent transactions
+    and daily totals
+    """
+    try:
         conn = get_db_connection()
-        cursor = conn.cursor()
-
-        # Get the month from the query parameter (if present)
-        month = request.args.get('month')
+        if not conn:
+            flash('Database connection failed')
+            return render_template('error.html')
+            
+        with conn.cursor() as cursor:
+            # Get recent transactions
+            cursor.execute("""
+                SELECT * FROM transactions 
+                ORDER BY created_at DESC 
+                LIMIT 50
+            """)
+            transactions = cursor.fetchall()
+            
+            # Get today's totals
+            cursor.execute("""
+                SELECT * FROM daily_totals 
+                WHERE date = CURDATE()
+            """)
+            daily_total = cursor.fetchone()
+            
+        return render_template(
+            'dashboard.html',
+            transactions=transactions,
+            daily_total=daily_total
+        )
         
-        # If a month is selected, filter results by that month
-        if month:
-            # Convert month name to a numeric representation (e.g., January -> 01)
-            month_num = list(calendar.month_name).index(month)  # Convert month name to number
-            cursor.execute("SELECT meal, dessert_side, entree, soup, cookie, roll, date, togo "
-                           "FROM FoodQuantity "
-                           "WHERE MONTH(date) = %s "
-                           "ORDER BY date DESC", (month_num,))
-        else:
-            # Fetch the first 30 rows from the FoodQuantity table by default
-            cursor.execute("SELECT meal, dessert_side, entree, soup, cookie, roll, date, togo "
-                           "FROM FoodQuantity "
-                           "ORDER BY date DESC LIMIT 30")
+    except Exception as e:
+        logging.error(f"Dashboard error: {str(e)}")
+        flash('Error loading dashboard')
+        return render_template('error.html')
+        
+    finally:
+        if 'conn' in locals():
+            conn.close()
 
-        food_data = cursor.fetchall()
-        conn.close()
-
-        # Pass the data to the template
-        return render_template('data.html', food_data=food_data)
-    else:
-        return redirect(url_for('login'))
-
-@app.route('/download_csv', methods=['GET'])
-def download_csv():
-    if 'user' in session:  # Ensure the user is logged in
-        # Get the month and year from the dropdown
-        month = request.args.get('month')
-        year = request.args.get('year', str(datetime.now().year))  # Default to current year if not provided
-
+@app.route('/export_csv')
+@login_required
+def export_csv():
+    """
+    Generate and download CSV report of transactions
+    """
+    try:
         conn = get_db_connection()
-        cursor = conn.cursor()
-        if month=="None":
-            month_num = (datetime.now().month)
-        else: 
-        # Fetch the data for the selected month
-            month_num = list(calendar.month_name).index(month)
-        print(month_num)
-        if month:
-            query = """
-            SELECT meal, dessert_side, entree, soup, cookie, roll, date, togo 
-            FROM FoodQuantity 
-            WHERE MONTH(date) = %s 
-            ORDER BY date ASC
-            """
-            cursor.execute(query, (month_num))
-        else:
-            query = """
-            SELECT meal, dessert_side, entree, soup, cookie, roll, date, togo 
-            FROM FoodQuantity 
-            ORDER BY date ASC
-            LIMIT 30
-            """
-            cursor.execute(query)
-
-        food_data = cursor.fetchall()
-        conn.close()
-
-        # Create a CSV in-memory
+        if not conn:
+            flash('Database connection failed')
+            return redirect(url_for('index'))
+            
+        # Create CSV in memory
         output = StringIO()
         writer = csv.writer(output)
-
-        # Write the header row
-        writer.writerow(['Date', 'Meal', 'Dessert', 'Entree', 'Soup', 'Cookie', 'Roll', 'To Go'])
-
-        # Write the data rows
-        for row in food_data:
-            writer.writerow([row[6], row[0], row[1], row[2], row[3], row[4], row[5], row[7]])
-
-        # Generate the CSV filename based on the selected month and year
-        month_num = str(month_num)
-        csv_filename = f"{month_num.zfill(2)}-{year[-2:]}.csv"  # Ensure month is 2 digits (e.g., 01 for January)
-
-        # Create a Response object and set the headers
-        response = Response(output.getvalue(), mimetype='text/csv')
-        response.headers['Content-Disposition'] = f'attachment; filename={csv_filename}'
-
-        return response
-    else:
-        return redirect(url_for('login'))
-
-# Route for the logout functionality
-@app.route('/logout')
-def logout():
-    session.pop('user', None)  # Remove user from session
-    return redirect(url_for('login'))
->>>>>>> ccd8923a5f42e2fc50c743cda7305051de5fbab4
+        
+        # Write headers
+        writer.writerow([
+            'ID', 'Date', 'Meals', 'Desserts', 'Entrees',
+            'Soups', 'Cookies', 'Rolls', 'Total Price'
+        ])
+        
+        # Get and write transaction data
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM transactions ORDER BY created_at")
+            for row in cursor.fetchall():
+                writer.writerow([
+                    row[0], row[9].strftime('%Y-%m-%d'),  # ID and Date
+                    row[1], row[2], row[3], row[4],       # Item quantities
+                    row[5], row[6], f"${row[7]:.2f}"      # Price
+                ])
+        
+        # Prepare response
+        output.seek(0)
+        return send_file(
+            output,
+            mimetype='text/csv',
+            as_attachment=True,
+            download_name=f'transactions_{datetime.now().strftime("%Y%m%d")}.csv'
+        )
+        
+    except Exception as e:
+        logging.error(f"CSV export error: {str(e)}")
+        flash('Error exporting data')
+        return redirect(url_for('index'))
+        
+    finally:
+        if 'conn' in locals():
+            conn.close()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000, debug=True)
+    # Start Flask application
+    app.run(
+        host='0.0.0.0',  # Listen on all network interfaces
+        port=8000,       # Run on port 8000
+        debug=False      # Disable debug mode in production
+    )

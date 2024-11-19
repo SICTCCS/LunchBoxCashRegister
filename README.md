@@ -10,18 +10,39 @@
 7. [Troubleshooting](#7-troubleshooting)
 8. [Resetting the App](#8-resetting-the-app)
 9. [Technical Support](#9-technical-support)
+10. [System Architecture](#10-system-architecture)
 
 ---
 
 ## 1. Introduction
 
-Welcome to the Cash Register App, a tool designed for cashiers to efficiently manage orders and process payments. This application provides a straightforward interface to add food items, calculate the total bill, and handle transactions.
+The Cash Register App is an integrated solution designed for school cafeteria operations. It combines:
+- An Android-based front-end for cashiers
+- A Python-based backend API for data processing
+- A MariaDB database for data storage
+- Automated scheduling via cron jobs
 
 ---
 
 ## 2. Installation
 
-Ensure that your Android device meets the system requirements for the Cash Register App, download the APK file, go to build, then build the APK, wait for the pop-up in the bottom right for 30 seconds, click "locate," and then drag the file to the tablet, finally opening the file on the tablet.
+### Android App Installation
+1. Build the APK from Android Studio
+2. Wait for the build completion notification (approximately 30 seconds)
+3. Click "locate" to find the APK file
+4. Transfer the APK to the target tablet
+5. Install the APK on the tablet
+
+### Backend Installation
+1. Run the install.sh script to set up:
+   - Required system packages
+   - Python virtual environment
+   - Database server
+   - Automated scheduling
+2. Verify the installation by checking:
+   - MariaDB service status
+   - Cron job configuration
+   - API accessibility
 
 ---
 
@@ -115,5 +136,37 @@ If you encounter technical issues or have questions:
 
 - Contact our technical support team via either email too .
 - Provide detailed information about the problem for faster assistance.
+
+---
+
+## 10. System Architecture
+
+### Components
+1. **Frontend (Android)**
+   - Native Android app written in Java
+   - Handles user interface and input validation
+   - Communicates with backend via REST API
+
+2. **Backend (Python)**
+   - Flask-based REST API
+   - Processes transactions
+   - Manages database operations
+   - Handles automated tasks
+
+3. **Database (MariaDB)**
+   - Stores transaction records
+   - Maintains user accounts
+   - Tracks inventory
+
+4. **Automation (Cron)**
+   - Manages daily operation schedule
+   - Handles system startup/shutdown
+   - Processes end-of-day reports
+
+### Data Flow
+1. Cashier inputs order details
+2. Android app validates and sends to API
+3. API processes and stores in database
+4. Automated reports generated daily
 
 Thank you for using the Cash Register App.

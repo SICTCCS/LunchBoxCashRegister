@@ -1,138 +1,151 @@
-from flask import Flask,redirect, Response,render_template, request, jsonify
+#!/usr/bin/env python3
+
+"""
+Main API Server for LunchBox Cash Register System
+
+This script provides the REST API endpoints for the cash register application.
+It handles transaction processing, data storage, and communication with the 
+MariaDB database.
+
+Features:
+- REST API endpoints for transactions
+- Database connection management
+- Transaction validation
+- Error handling and logging
+"""
+
+from flask import Flask, request, jsonify
 import pymysql
-from io import StringIO
+import logging
+from datetime import datetime
+import os
 
-
-
-
-app = Flask(__name__)
-# Database configuration
-connection = pymysql.connect(
-        host='localhost',
-        user='api_user',
-        password='api_password',
-        database='lunchbox'
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename='api_server.log'
 )
-@app.route('/')
-def display_data():
-    with connection.cursor() as cursor:
-        query = "SELECT * FROM mainDatabase"
-        cursor.execute(query)
-        rows = cursor.fetchall()
 
-    table_html = "<table><tr><th>lunchbox</th><th>score</th></tr>"
-    sorted_data_byId = sorted(rows, key=lambda x: x[0])
+# Initialize Flask application
+app = Flask(__name__)
 
-    userJsonData = []
+# Database configuration
+DB_CONFIG = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Password1',
+    'database': 'lunchbox'
+}
 
-    for row in sorted_data_byId:
-        meal, dessert_side, entree, soup, cookie, roll, description, data, togo = row
-        table_row = f"<tr><td>{meal}</td><td>{dessert_side}</td><td>{entree}</td><td>{soup}</td><td>{cookie}</td><td>{roll}</td><td>{description}</td><td>{data}</td><td>{togo}</td></tr>"
-        table_html += table_row
-        data_dict = {
-                'meal': meal,
-                'dessert': dessert_side,
-                'entree': entree,
-                'soup': soup,
-                'cookie': cookie,
-                'roll': roll,
-                'description': description,
-                'data': data,
-                'togo': togo
-            }
-        userJsonData.append(data_dict)
-
-    table_html += "</table>"  #method="GET">
-    download_button ="""
-    <form action="/download_csv"> 
-        <button type="submit">Download CSV</button>
-    </form>
-
+def get_db_connection():
     """
-    return f"{table_html}<br><br>JSON Data: {userJsonData} {download_button} "
-
-@app.route('/add_data', methods=['POST'])
-def input_data():
-    out="oops something went wrong"
-    #mainMealQuantity=1
-    #dessertQuantity=1
-    #entreQuantity= 1
-    #soupQuantity=6
-    #cookieQuantity= 3
-    #rollQuantity= 8
-    #description='testing'
-    print(request)
-    if request.is_json:
-        data = request.get_json()
-        meal = data.get("meal")
-        dessert_side = data.get("dessert_side")
-        entree = data.get("entree")
-        soup = data.get("soup")
-        cookie = data.get("cookie")
-        roll = data.get("roll")
-        description = data.get("description")
-        togo = data.get("togo")
-    #print(mainMeal,dessert,entre,soup,cookie,roll,description)
-
-    #try:
-    #    data = request.get_json()
-    #    return(data)
-    #except:
-    #    print(data)
-    #    return("didn't work")
-    
-        
-
-    query=f'INSERT INTO FoodQuantity (meal, dessert_side, entree, soup, cookie, roll, description, togo) VALUES ({meal},{dessert_side},{entree},{soup},{cookie},{roll},"{description}",{togo})'#(%s, %s, %s, %s, %s, %s, %s, %s)"
-    #query = f'INSERT INTO mainDatabase (mainMealQuantity, dessertQuantity, entreQuantity, soupQuantity, cookieQuantity, rollQuantity, description) VALUES (%s, %s, %s, %s, %s, %s, %s)'
-    print(query)
+    Create and return a database connection.
+    Includes error handling and logging.
+    """
     try:
-        with connection.cursor() as cursor:
-            #print(query)
-            cursor.execute(query)
-            #cursor.execute(query, (mainMealQuantity, dessertQuantity, entreQuantity, soupQuantity, cookieQuantity, rollQuantity, description))
-            #print("excuted")
-        connection.commit()
-        #print("committed")
-        out="finished"
-    except pymysql.Error as e:
-        print(e)
-        return out
-        #cursor.execute(query, (data['mainMealQuantity'], data['dessertQuantity'], data['entreQuantity'], data['soupQuantity'], data['cookieQuantity'], data['rollQuantity'], data['description'], data['data']))
-        #connection.commit()
-    #return redirect(url_for('getAll'))
-    print("redirecting")
-    return "succcess addition!"#redirect('/')
-    
-@app.route('/download_csv')
-def download_csv():
-    print("Test")
-    with connection.cursor() as cursor:
-        query = "SELECT * FROM FoodQuantity"
-        cursor.execute(query)
-        data = cursor.fetchall()
-    print(connection)
-    #cursor = connection.cursor()
-    #query = "SELECT * FROM FoodQuantity"
-    #cursor.execute(query)
+        connection = pymysql.connect(**DB_CONFIG)
+        return connection
+    except Exception as e:
+        logging.error(f"Database connection failed: {str(e)}")
+        return None
 
-    #data = cursor.fetchall()
-    csv_data = []
-    for row in data:
-        csv_data.append(','.join(map(str, row)))
-        print(row)
-    csv_content = '\n'.join(csv_data)
-    print(csv_content)
-    response = Response(csv_content, content_type='text/csv')
-    response.headers['Content-Disposition'] = 'attachment; filename=data.csv'
-    cursor.close()
-    connection.close()
-    #display_data() 
-    print(response)
-    print("test")
-    return response
+@app.route('/', methods=['POST'])
+def process_transaction():
+    """
+    Main endpoint for processing cash register transactions.
+    Accepts JSON data with item quantities and calculates total price.
+    
+    Expected JSON format:
+    {
+        "meal": int,
+        "dessert_side": int,
+        "entree": int,
+        "soup": int,
+        "cookie": int,
+        "roll": int,
+        "description": string
+    }
+    """
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        
+        # Validate required fields
+        required_fields = ['meal', 'dessert_side', 'entree', 'soup', 'cookie', 'roll']
+        for field in required_fields:
+            if field not in data:
+                return jsonify({'error': f'Missing required field: {field}'}), 400
+        
+        # Calculate total price based on item quantities
+        total_price = (
+            data['meal'] * 8.00 +          # $8.00 per meal
+            data['dessert_side'] * 2.00 +  # $2.00 per dessert
+            data['entree'] * 3.00 +        # $3.00 per entree
+            data['soup'] * 3.00 +          # $3.00 per soup
+            data['cookie'] * 1.00 +        # $1.00 per cookie
+            data['roll'] * 0.50            # $0.50 per roll
+        )
+        
+        # Store transaction in database
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'error': 'Database connection failed'}), 500
+            
+        with conn.cursor() as cursor:
+            # Insert transaction record
+            sql = """
+                INSERT INTO transactions 
+                (meal, dessert_side, entree, soup, cookie, roll, total_price, description)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(sql, (
+                data['meal'], data['dessert_side'], data['entree'],
+                data['soup'], data['cookie'], data['roll'],
+                total_price, data.get('description', '')
+            ))
+            
+            # Update daily totals
+            update_daily_totals(cursor, total_price)
+            
+            conn.commit()
+            
+        return jsonify({
+            'status': 'success',
+            'total_price': total_price,
+            'timestamp': datetime.now().isoformat()
+        })
+        
+    except Exception as e:
+        logging.error(f"Transaction processing failed: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+    
+    finally:
+        if 'conn' in locals():
+            conn.close()
+
+def update_daily_totals(cursor, total_price):
+    """
+    Update or create daily totals record for the current date.
+    """
+    today = datetime.now().date()
+    
+    # Try to update existing record first
+    sql = """
+        INSERT INTO daily_totals (date, total_transactions, total_revenue)
+        VALUES (%s, 1, %s)
+        ON DUPLICATE KEY UPDATE
+        total_transactions = total_transactions + 1,
+        total_revenue = total_revenue + %s
+    """
+    cursor.execute(sql, (today, total_price, total_price))
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=8000)
+    # Start Flask application
+    app.run(
+        host='0.0.0.0',  # Listen on all network interfaces
+        port=8000,       # Run on port 8000
+        debug=False      # Disable debug mode in production
+    )
 
 
