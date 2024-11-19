@@ -36,15 +36,15 @@ log "Updating package information..."
 apt update
 
 log "Installing system dependencies..."
-apt install -y mariadb-server cron python3-full python3-pip python3-venv vim curl
+apt install -y mariadb-server cron python3-full python3-pip python3-venv vim curl python3-flask python3-pymysql
 
-# Set up Python virtual environment
+# Set up Python virtual environment with system packages
 log "Creating Python virtual environment..."
-python3 -m venv "${VENV_DIR}"
+python3 -m venv "${VENV_DIR}" --system-site-packages
 source "${VENV_DIR}/bin/activate"
 
-log "Installing Python packages..."
-pip3 install flask pymysql
+# No need to install Flask and PyMySQL via pip as they're installed system-wide
+log "Python packages already installed via apt"
 
 # Configure MariaDB
 log "Configuring MariaDB..."
@@ -55,12 +55,12 @@ systemctl enable mariadb
 log "Initializing database..."
 "${VENV_DIR}/bin/python3" "${INSTALL_DIR}/DBSetup.py"
 
-# Configure cron jobs
+# Configure cron jobs with proper Python path
 log "Setting up cron jobs..."
 crontab_content="
 # LunchBox Cash Register Automation
-01 06 * * 1-5 ${API_DIR}/Web/webRun.py
-01 10 * * 1-5 ${API_DIR}/index5.py 
+01 06 * * 1-5 ${VENV_DIR}/bin/python3 ${API_DIR}/Web/webRun.py
+01 10 * * 1-5 ${VENV_DIR}/bin/python3 ${API_DIR}/index5.py 
 30 15 * * 1-5 pkill -f ${API_DIR}/index5.py 
 30 16 * * 1-5 pkill -f ${API_DIR}/Web/webRun.py"
 
