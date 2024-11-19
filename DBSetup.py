@@ -4,12 +4,7 @@
 Database Setup Script for LunchBox Cash Register System
 
 This script initializes and configures the MariaDB database for the LunchBox Cash Register system.
-It creates necessary tables, users, and sets up proper permissions.
-
-Tables created:
-- users: Store login credentials and user roles
-- transactions: Store all cash register transactions
-- daily_totals: Store daily summary statistics
+It creates the FoodQuantity table for tracking transactions.
 """
 
 import os
@@ -32,7 +27,7 @@ logging.basicConfig(
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': os.getenv('MYSQL_PWD', 'Password1'),  # Changed to Password1
+    'password': os.getenv('MYSQL_PWD', 'Password1'),
     'database': 'lunchbox'
 }
 
@@ -40,38 +35,16 @@ DB_CONFIG = {
 SQL_STATEMENTS = {
     'create_database': "CREATE DATABASE IF NOT EXISTS lunchbox",
     
-    'create_users_table': """
-        CREATE TABLE IF NOT EXISTS users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(50) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            role ENUM('admin', 'cashier') NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    """,
-    
-    'create_transactions_table': """
-        CREATE TABLE IF NOT EXISTS transactions (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            meal INT DEFAULT 0,
-            dessert_side INT DEFAULT 0,
-            entree INT DEFAULT 0,
-            soup INT DEFAULT 0,
-            cookie INT DEFAULT 0,
-            roll INT DEFAULT 0,
-            total_price DECIMAL(10,2) NOT NULL,
-            description TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    """,
-    
-    'create_daily_totals_table': """
-        CREATE TABLE IF NOT EXISTS daily_totals (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            date DATE UNIQUE NOT NULL,
-            total_transactions INT DEFAULT 0,
-            total_revenue DECIMAL(10,2) DEFAULT 0.00,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    'create_food_quantity_table': """
+        CREATE TABLE IF NOT EXISTS FoodQuantity (
+            meal INT,
+            dessert_side INT,
+            entree INT,
+            soup INT,
+            cookie INT,
+            roll INT,
+            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            togo BOOLEAN
         )
     """
 }
@@ -92,7 +65,7 @@ def create_database_connection(database=None):
         sys.exit(1)
 
 def setup_database():
-    """Initialize database and create required tables."""
+    """Initialize database and create FoodQuantity table."""
     try:
         # Create initial connection without database
         conn = create_database_connection()
@@ -111,17 +84,9 @@ def setup_database():
         conn = create_database_connection(DB_CONFIG['database'])
         cursor = conn.cursor()
         
-        # Create tables
-        for table_name, sql in SQL_STATEMENTS.items():
-            if table_name.startswith('create_') and table_name != 'create_database':
-                logging.info(f"Creating table: {table_name}")
-                cursor.execute(sql)
-                
-        # Create default admin user if it doesn't exist
-        cursor.execute("""
-            INSERT IGNORE INTO users (username, password, role)
-            VALUES ('admin', 'admin123', 'admin')
-        """)
+        # Create FoodQuantity table
+        logging.info("Creating FoodQuantity table...")
+        cursor.execute(SQL_STATEMENTS['create_food_quantity_table'])
         
         conn.commit()
         logging.info("Database setup completed successfully")
@@ -137,20 +102,17 @@ def setup_database():
             conn.close()
 
 def verify_setup():
-    """Verify that all required database objects were created correctly."""
+    """Verify that the FoodQuantity table was created correctly."""
     try:
         conn = create_database_connection(DB_CONFIG['database'])
         cursor = conn.cursor()
         
-        # Check tables
+        # Check if FoodQuantity table exists
         cursor.execute("SHOW TABLES")
         tables = cursor.fetchall()
-        expected_tables = ['users', 'transactions', 'daily_totals']
-        
-        for table in expected_tables:
-            if (table,) not in tables:
-                logging.error(f"Missing table: {table}")
-                return False
+        if ('FoodQuantity',) not in tables:
+            logging.error("Missing table: FoodQuantity")
+            return False
                 
         logging.info("Database verification completed successfully")
         return True
