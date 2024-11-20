@@ -9,7 +9,7 @@ chmod +x install.sh
 
 2. Run the installation script:
 ```bash
-./install.sh
+sudo ./install.sh
 ```
 
 This will:
@@ -17,6 +17,21 @@ This will:
 - Set up the MariaDB database
 - Configure the Python environment
 - Set up automated scheduling
+
+3. Check and make sure the cron jobs are set up correctly:
+```bash
+crontab -e
+```
+If the crontab file does not open and it prints to the terminal, select the editor vim.basic.
+
+and make sure the following lines are present:
+```bash
+01 06 * * 1-5 python3 home/lb/LunchBoxCashRegister/API/Web/webRun.py
+01 10 * * 1-5 python3 home/lb/LunchBoxCashRegister/API/index5.py 
+30 15 * * 1-5 kill -f home/lb/LunchBoxCashRegister/API/index5.py 
+30 16 * * 1-5 kill -f home/lb/LunchBoxCashRegister/API/Web/webRun.py
+```
+
 
 ## Running the Application
 

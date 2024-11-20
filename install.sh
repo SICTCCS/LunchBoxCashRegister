@@ -75,15 +75,15 @@ MYSQL_PWD="${DB_ROOT_PASSWORD}" "${VENV_DIR}/bin/python3" "${INSTALL_DIR}/DBSetu
 log "Setting up cron jobs..."
 crontab_content="
 # LunchBox Cash Register Automation
-01 06 * * 1-5 ${VENV_DIR}/bin/python3 ${API_DIR}/Web/webRun.py
-01 10 * * 1-5 ${VENV_DIR}/bin/python3 ${API_DIR}/index5.py 
-30 15 * * 1-5 pkill -f ${API_DIR}/index5.py 
-30 16 * * 1-5 pkill -f ${API_DIR}/Web/webRun.py"
+01 06 * * 1-5 python3 ${API_DIR}/Web/webRun.py
+01 10 * * 1-5 python3 ${API_DIR}/index5.py 
+30 15 * * 1-5 kill -f ${API_DIR}/index5.py 
+30 16 * * 1-5 kill -f ${API_DIR}/Web/webRun.py"
 
 echo "${crontab_content}" | crontab -
 
 log "Installation completed successfully!"
-log "Web interface will be available at http://localhost:8000"
+log "Web interface will be available at http://localhost:4000"
 
 # Verify installation
 if systemctl is-active --quiet mariadb; then
