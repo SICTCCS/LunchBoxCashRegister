@@ -159,6 +159,6 @@ if __name__ == '__main__':
     # Start Flask application
     app.run(
         host='0.0.0.0',  # Listen on all network interfaces
-        port=8000,       # Run on port 8000
+        port=4000,       # Changed to port 4000
         debug=False      # Disable debug mode in production
     )

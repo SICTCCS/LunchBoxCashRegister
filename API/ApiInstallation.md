@@ -102,7 +102,7 @@ Create a test transaction file (add_data.json):
 
 Access the management interface at:
 ```
-http://10.60.4.150:8000
+http://10.60.4.150:4000
 ```
 
 Important Notes:
