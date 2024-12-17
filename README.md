@@ -5,12 +5,8 @@
 2. [Installation](#2-installation)
 3. [Getting Started](#3-getting-started)
 4. [Ordering Items](#4-ordering-items)
-5. [Payment Processing](#5-payment-processing)
-6. [Additional Features](#6-additional-features)
-7. [Troubleshooting](#7-troubleshooting)
-8. [Resetting the App](#8-resetting-the-app)
-9. [Technical Support](#9-technical-support)
-10. [System Architecture](#10-system-architecture)
+5. [Troubleshooting](#7-troubleshooting)
+6. [System Architecture](#10-system-architecture)
 
 ---
 
@@ -61,7 +57,7 @@ Upon launching the Cash Register App, you will be presented with the main screen
 ### Main Tray Items
 - Use the "Add" button to increase the quantity.
 - Use the "Del" button to decrease the quantity.
-- Each addition increases the total price by $8.
+- Each addition increases the total price.
   
 <img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Meal%20Item.png" height="200px" width="800px"></kbd><br>
 
@@ -91,55 +87,14 @@ Upon launching the Cash Register App, you will be presented with the main screen
 
 ---
 
-## 5. Payment Processing
+## 5. Troubleshooting
 
-To process payments, follow these steps:
-
-1. Enter the amount given by the customer in the "Amount Given" field.
-2. Press the "Calculate" button.
-3. The change due to the customer will be displayed.
- -  
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/Payments.png" height="200px" width="800px"></kbd><br>
+- If it gives an error to see Mr. Bander then that means the python file isn't running.
+- Other errors are potnetial setup errors or missing packages on install
 
 ---
 
-## 6. Additional Features
-
-### Additional Options
-- Click the "More Options" button to access extra functionalities.
-- Add specific amounts (1, 5, 10, 20,50 100) to the "Amount Given" field.
--Exact change button in order to calculate the exact amount of change without having to press two buttons.
--
-<img src="https://github.com/SICTCCS/LunchBoxCashRegister/blob/main/Images/ExactChange.png" height="200px" width="800px"></kbd><br>
-
----
-
-## 7. Troubleshooting
-
-- **Invalid Inputs:** Ensure that you enter valid numerical values in the "Amount Given" field.
-- **Negative Total:** If the total displays as negative, review the item quantities and ensure proper usage of the "Del" button.
-
----
-
-## 8. Resetting the App
-
-To start a new order and reset all quantities:
-
-1. Click the "Reset" button.
-2. All item quantities and the total price will be set to zero.
-
----
-
-## 9. Technical Support
-
-If you encounter technical issues or have questions:
-
-- Contact our technical support team via either email too .
-- Provide detailed information about the problem for faster assistance.
-
----
-
-## 10. System Architecture
+## 6. System Architecture
 
 ### Components
 1. **Frontend (Android)**
